@@ -43,7 +43,7 @@
 
 * 四.函数和Lambda表达式
 
-    * [4.1 函数](http://www.jianshu.com/p/86088b408f94)
+    * [4.1 函数](chapter4/Kotlin4-1-函数.md)
 
 > 有任何疑问，欢迎加群讨论：261386924
 
