@@ -1,6 +1,6 @@
 
 ## 一.准备开始
-#### [1.1 基本语法](chapter1/README.md)
+#### [1.1 基本语法](chapter1/Kotlin1-1-基本语法.md)
 
 #### [1.2 习惯用法](http://www.jianshu.com/p/0be61eb7833d)
 
