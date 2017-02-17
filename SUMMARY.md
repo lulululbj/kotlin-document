@@ -1,7 +1,5 @@
 # Summary
 
-## Introduction
-
 * [Introduction](README.md)
 * [一.准备开始](..md)
 * [1.1 基本语法](chapter1/Kotlin1-1-基本语法.md)
