@@ -1,7 +1,7 @@
-# Summary
 
 * [Introduction](README.md)
-    * [一.准备开始](..md)
+
+* [一.准备开始](..md)
     * [1.1 基本语法](chapter1/Kotlin1-1-基本语法.md)
     * [1.2 习惯用法](chapter1/Kotlin1-2-习惯用法.md)
     * [1.3 编码规范](chapter1/Kotlin1-3-编码规范.md)
