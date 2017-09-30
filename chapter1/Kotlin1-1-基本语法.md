@@ -1,7 +1,8 @@
 ## 基本语法
-#### 定义包名
 
-包名应该在源文件顶部定义
+### 包
+
+包名在源文件顶部定义
 
 ```
 package my.demo
@@ -11,31 +12,36 @@ import java.util.*
 // ...
 ```
 
-包名不需要和路径匹配，源文件可以存在文件系统的任何位置
+包名不需要和目录匹配，源文件可以存在文件系统的任何位置
 
 See [Packages]()
  
-#### 定义方法
-两个`Int`参数，返回值是`Int`的方法
+### 函数
+
+两个 `Int` 参数，返回值是 `Int` 的方法:
+
 ```
 fun sum(a: Int, b: Int): Int {
     return a + b
 }
 ```
 
-带有一个表达式，并自动推断返回值类型的方法
+表达式作为函数体，自动推断返回值类型的函数：
+
 ```
 fun sum(a: Int, b: Int) = a + b
 ```
 
-返回无意义值的方法
+返回无意义值的函数：
+
 ```
 fun sun(a: Int,b: Int) : Unit {
     print(a+b)
 }
 ```
 
-当返回值是`Unit`时，可省略
+返回类型是 `Unit` 时，可省略：
+
 ```
 fun printSum(a: Int, b: Int) {
     print(a + b)
@@ -44,34 +50,43 @@ fun printSum(a: Int, b: Int) {
 
 See [Functions]()
  
-####定义局部变量
-常量
+### 局部变量
+
+常量(`assign-once` `read-only`):
+
 ```
 val a: Int = 1
-val b = 1   // 自动推断Int类型
-val c: Int  // 没有初始值，必须声明类型
-c = 1       // 明确赋值
+val b = 1   // 自动推断 Int 类型
+val c: Int  // 没有提供初始值，必须声明类型
+c = 1       // 延迟赋值
 ```
-变量
+
+变量:
+
 ```
-var x = 5 // 自动推断Int类型
+var x = 5 // 自动推断 Int 类型
 x += 1
 ```
+
 See [Properties And Fields]()
  
-####注释
-就像Java和JacaScript，Kotlin也支持行注释和块注释
+### 注释
+
+和 Java, JacaScript 一样，Kotlin 也支持行注释和块注释:
+
 ```
 // This is an end-of-line comment
 
 /* This is a block comment
    on multiple lines. */
 ```
-与Java不同的是，Kotlin的块注释可以嵌套
 
-See [Documenting Kotlin Code]() 了解文档注释的语法
+与 Java 不同的是，Kotlin 的块注释可以嵌套
+
+See [Documenting Kotlin Code]() 了解文档注释语法
  
-####使用字符串模板
+### 使用字符串模板
+
 ```
 fun main(args: Array<String>) {
     if (args.size == 0) return
@@ -81,7 +96,8 @@ fun main(args: Array<String>) {
 ```
 See [String templates]()
  
-####使用条件表达式
+### 使用条件表达式
+
 ```
 fun max(a: Int, b: Int): Int {
     if (a > b) {
@@ -91,16 +107,21 @@ fun max(a: Int, b: Int): Int {
     }
 }
 ```
+
 使用`if`作为表达式
+
 ```
-fun max(a: Int,b: Int)=if (a>b) a else b 
+fun max(a: Int,b: Int)=if (a>b) a else b
 ```
+
 See [*if*-expressions]()
  
-####使用可空变量以及空值检查
+### 使用可空变量以及空值检查
+
 当变量可能为空时必须明确标识这个引用是可空的
 
 如果`str`不是数字，则返回空
+
 ```
 fun parseInt(str: String): Int? {
     // ...
@@ -108,6 +129,7 @@ fun parseInt(str: String): Int? {
 ```
 
 返回可空值的方法
+
 ```
 fun main(args: Array<String>) {
     if (args.size < 2) {
@@ -143,8 +165,10 @@ fun main(args: Array<String>) {
 
 See [Null-safety]()
  
-####使用类型检测和自动类型转换
+### 使用类型检测和自动类型转换
+
 `is`操作符用来检测某个表达式是否是某个类型的实例。如果一个不可变的局部变量或者属性值经过类型检测为特定类型后，就没有必要再明确转换
+
 ```
 fun getStringLength(obj: Any): Int? {
     if (obj is String) {
@@ -181,7 +205,8 @@ fun getStringLength(obj: Any): Int? {
 ```
 See [Classes]()
  
-####使用for循环
+### 使用for循环
+
 ```
 fun main(args : Array<String>){
     for(arg in args){
@@ -194,22 +219,24 @@ or
 ```
 for (i in args.indices) {
     print(args[i])
-} 
+}
 ```
 See [for loop]()
  
-####使用while循环
+### 使用while循环
+
 ```
 fun main(args : Array<String>){
     var i=0
-    while(i<args.size){ 
+    while(i<args.size){
        print(args[i++])   
     }
 }
 ```
 See [while loop]()
  
-####使用when表达式
+### 使用when表达式
+
 ```
 fun cases(obj: Any) {
     when (obj) {
@@ -223,7 +250,8 @@ fun cases(obj: Any) {
 ```
 See [when expression]()
  
-####使用ranges
+### 使用ranges
+
 使用`in`操作符检测某个数字是否在指定范围内
 ```
 if (x in 1..y-1) {
@@ -245,7 +273,8 @@ for(x in 1..5){
 ```
 See [Ranges]()
  
-####使用集合
+### 使用集合
+
 迭代一个集合
 ```
 for(name in names){
@@ -269,4 +298,5 @@ names
 ```
 See [Higher-order functions and Lambdas]()
 
+> update at 2017/09/30
 > 有任何疑问，欢迎加群讨论：261386924
