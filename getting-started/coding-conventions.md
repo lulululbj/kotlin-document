@@ -33,22 +33,48 @@ list.filter { it > 10 }.map { element -> element * 2 }
 ```
 
 在简短非嵌套的 lambda 表达式中，通常建议不要显示声明参数，而使用 `it` 代替。反之，在嵌套的Lambdas表达式中，总是应该显式声明属性。
- 
-#### Unit
-如果一个函数返回`Unit`，应该被省略
+
+### 类头格式化
+
+仅有几个参数的类可以缩写为一行代码 ：
+
+```
+class Person(id: Int, name: String)
+``` 
+
+头很长的类需要进行格式化。每一个主构造器参数单独一行并缩进，右括号也需单独一行。如果我们使用继承，父类构造器的调用或者实现的接口列表应和右括号处于同一行 ：
+
+```
+class Person(
+    id: Int,
+    name: String,
+    surname: String
+) : Human(id, name) {
+    // ...
+}
+```
+
+### Unit
+
+如果一个函数返回 `Unit` ，应该被省略 ：
+
 ```
 fun foo() { // ": Unit" is omitted here
 
 }
 ```
  
-#### Functions vs Properties
-In some cases functions with no arguments might be interchangeable with read-only properties. Although the semantics are similar, there are some stylistic conventions on when to prefer one to another.
+### 函数 vs 属性
 
-Prefer a property over a function when the underlying algorithm:
-* does not throw
-* has a O(1) complexity
-* is cheap to calculate (or caсhed on the first run)
-* returns the same result over invocations
+某些情况下无参函数和只读属性是可以互换的。尽管语义上相似，但是在具体取舍上还是有格式上的规范的。
 
+底层算法更偏向于属性 ：
+
+* 不会抛出异常
+* `O(1)` 复杂度
+* 计算廉价 (或者第一次运行时进行缓存)
+* 多次调用返回相同的结果
+
+
+> update at 2017/10/25 
 > 有任何疑问，欢迎加群讨论：261386924

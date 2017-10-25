@@ -212,7 +212,7 @@ fun theAnswer(): Int {
     return 42
 }
 ```
-可以和其他习惯用法有效结合，简化代码，例如when表达式：
+可以和其他习惯用法有效结合，简化代码，例如when表达式 ：
 ```
 fun transform(color: String): Int = when (color) {
     "Red" -> 0
