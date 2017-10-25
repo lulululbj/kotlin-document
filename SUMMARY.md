@@ -4,7 +4,7 @@
 * [一.准备开始](..md)
     * [1.1 基本语法](getting-started/basic-syntax.md)
     * [1.2 习惯用法](getting-started/idioms.md)
-    * [1.3 编码规范](getting-started/Kotlin1-3-编码规范.md)
+    * [1.3 编码规范](getting-started/coding-conventions.md)
 
 * 二.基础
     * [2.1 基本类型](chapter2/Kotlin2-1-基本类型.md)
