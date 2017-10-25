@@ -1,39 +1,48 @@
-## 习惯用法
-这里是在Kotlin中的一些习惯用法
-#### 创建DTOs (POJOs/POCOs)[](http://kotlinlang.org/docs/reference/idioms.html#creating-dtos-pojospocos)
+## 惯用语法
+
+Kotlin 中的一些常用惯用语法。
+
+### 创建数据传输对象 (POJOs/POCOs)
+
 ```
 data class Customer(val name:String,val email:String)
- ```
-向`Customer`类提供以下功能：
-* 对所有属性的getter方法（对于var 提供setter方法）
-* equals()
-* hashCode()
-* toString()
-* copy()
-* 所有属性的 component1(), component2(), … 等等 (See [Data classes]())
+```
+
+`Customer` 类具有以下函数 ：
+
+* 对所有属性的 getters（对于变量提供 setters 方法）
+* `equals()`
+* `hashCode()`
+* `toString()`
+* `copy()`
+* `component1()` , `component2()` , … ,  for all properties (See [Data classes]())
  
 
-#### 方法参数默认值
+### 函数参数默认值
+
 ```
 fun foo(a: Int = 0, b: String = "") { ... }
 ```
  
-#### 过滤list
+### 过滤 list
+
 ```
 val positives = list.filter { x -> x > 0 }
 ```
-even shorter,
+even shorter ：
 
 ```
 val positives = list.filter { it > 0 }
 ```
  
-#### 字符串插入
+### 字符串插入
+
 ```
 println("Name $name")
 ```
  
-#### 类型检查
+### 类型检查
+
 ```
 when (x) {
     is Foo -> ...
@@ -42,97 +51,109 @@ when (x) {
 }
 ```
  
-#### 遍历key-value型集合
+### 遍历 map/键值对集合
+
 ```
 for ((k, v) in map) {
     println("$k -> $v")
 }
 ```
-k,v可以随便命名
+`k` , `v` 可以任意命名
  
-#### 使用ranges
+### 使用 ranges
+
 ```
-for (i in 1..100) { ... }  // 闭合的，包括100
-for (i in 1 until 100) { ... } // 半开放的，不包括100
+for (i in 1..100) { ... }  // 闭合 range: 包括100
+for (i in 1 until 100) { ... } // 半开 range: 不包括100
 for (x in 2..10 step 2) { ... }
 for (x in 10 downTo 1) { ... }
 if (x in 1..10) { ... }
 ```
  
-#### 只读list
+### 只读 list
+
 ```
 val list = listOf("a", "b", "c")
 ```
  
-#### 只读map
+### 只读 map
+
 ```
 val map = mapOf("a" to 1, "b" to 2, "c" to 3)
 ```
  
-#### 访问map
+### 访问 map
+
 ```
 println(map["key"])
 map["key"] = value
 ```
  
-#### 懒属性
+### 懒属性
+
 ```
 val p: String by lazy {
     // compute the string
 }
 ```
  
-#### 懒属性
-```
-val p: String by lazy {
-    // compute the string
-}
-```
- 
-#### 扩展函数
+### 扩展函数
+
 ```
 fun String.spaceToCamelCase() { ... }
 
 "Convert this to camelcase".spaceToCamelCase()
 ```
  
-#### 创建单例
+### 创建单例
+
 ```
 object Resource{
    val name="Name"
 }
 ```
  
-#### if not null 简写
+### if not null 简写
+
 ```
 val files = File("Test").listFiles()
 
 println(files?.size)
 ```
  
-#### if not null and else 简写
+### if not null and else 简写
+
 ```
 val files = File("Test").listFiles()
 
 println(files?.size ?: "empty")
 ```
  
-#### 运行遇到null
+### 为 null 时执行
+
 ```
 val data = ...
 val email = data["email"] ?: throw IllegalStateException("Email is missing!")
 ```
  
-#### 不为null时执行
+### 不为null时执行
+
 ```
 val data = ...
 
 data?.let {
-    ... // not null时执行
+    ... // not null 时执行
 }
 ```
+
+### 不为 null 时返回非 null map
+
+```
+val value = ...
+val mapped = value?.let { transformValue(it) } ?: defaultValueIfValueIsNull
+```
  
-#### 返回when表达式
+### 返回 when 表达式
 ```
 fun transform(color: String): Int {
     return when (color) {
@@ -144,7 +165,8 @@ fun transform(color: String): Int {
 }
 ```
  
-#### try/catch 表达式
+### try/catch 表达式
+
 ```
 fun test() {
     val result = try {
@@ -157,7 +179,8 @@ fun test() {
 }
 ```
  
-#### if 表达式
+### if 表达式
+
 ```
 fun foo(param: Int) {
     val result = if (param == 1) {
@@ -170,14 +193,16 @@ fun foo(param: Int) {
 }
 ```
  
-#### Builder-style usage of methods that return Unit
+### Builder-style usage of methods that return Unit
+
 ```
 fun arrayOfMinusOnes(size: Int): IntArray {
     return IntArray(size).apply { fill(-1) }
 }
 ```
  
-#### 单一表达式函数
+### 单一表达式函数
+
 ```
 fun theAnswer() = 42
 ```
@@ -197,7 +222,8 @@ fun transform(color: String): Int = when (color) {
 }
 ```
  
-#### 使用with调用一个对象的多个方法
+### 使用 with 调用一个对象的多个方法
+
 ```
 class Turtle {
     fun penDown()
@@ -217,7 +243,8 @@ with(myTurtle) { //draw a 100 pix square
 }
 ```
  
-#### Java 7's try with resources
+### Java 7's try with resources
+
 ```
 val stream = Files.newInputStream(Paths.get("/some/file.txt"))
 stream.buffered().reader().use { reader ->
@@ -225,7 +252,8 @@ stream.buffered().reader().use { reader ->
 }
 ```
  
-#### 更方便的泛型方法
+### 需要泛型类型信息的泛型函数的简便形式
+
 ```
 //  public final class Gson {
 //     ...
@@ -235,7 +263,8 @@ stream.buffered().reader().use { reader ->
 inline fun <reified T: Any> Gson.fromJson(json): T = this.fromJson(json, T::class.java)
 ```
  
-#### 处理一个可空的 Boolean值
+### 使用可空 Boolean 值
+
 ```
 val b: Boolean? = ...
 if (b == true) {
@@ -245,4 +274,5 @@ if (b == true) {
 }
 ```
 
+> update at 2017/10/25  
 > 有任何疑问，欢迎加群讨论：261386924
